@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <title>Gestión de Docentes</title>
 </head>
 <body>
-
+    <h1>Lista de Docentes Activos</h1>
+    <a href="/docentes/nuevo">Agregar Docente</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Curso</th>
+                <th>Antigüedad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="docente : ${docentes}">
+                <td th:text="${docente.nombre}"></td>
+                <td th:text="${docente.apellido}"></td>
+                <td th:text="${docente.curso}"></td>
+                <td th:text="${#dates.yearsBetween(docente.fechaIngreso, #dates.createNow())}"></td>
+                <td>
+                    <a th:href="@{'/docentes/eliminar/' + ${docente.idDocente}}">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>

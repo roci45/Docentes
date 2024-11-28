@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario Docente</title>
+</head>
+<body>
+    <h1>Agregar Docente</h1>
+    <form th:action="@{/docentes}" th:object="${docente}" method="post">
+        <label>Nombre:</label>
+        <input type="text" th:field="*{nombre}" required/>
+        <br>
+        <label>Apellido:</label>
+        <input type="text" th:field="*{apellido}" required/>
+        <br>
+        <label>Curso:</label>
+        <select th:field="*{curso}">
+            <option value="MATEMATICAS">Matemáticas</option>
+            <option value="LENGUA">Lengua</option>
+            <option value="HISTORIA">Historia</option>
+            <option value="CIENCIAS">Ciencias</option>
+        </select>
+        <br>
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>
