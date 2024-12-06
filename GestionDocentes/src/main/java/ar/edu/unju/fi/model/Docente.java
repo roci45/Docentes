@@ -9,7 +9,7 @@ import java.time.Period;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Setter
 public class Docente {
 	
 	@Id
@@ -19,15 +19,15 @@ public class Docente {
 	private String legajo;
 	private String nombre;
 	private String apellido;
-	
+	private boolean estado;
 @Enumerated(EnumType.STRING)
 private Curso curso;
 private LocalDate fechaIngreso;
-private Boolean estado;
 public int calcularAntiguedad() {
 	return Period.between(fechaIngreso, LocalDate.now()).getYears();
 }
-
-
+public void setEstado(boolean estado) {
+    this.estado = estado;
+}
 
 }
